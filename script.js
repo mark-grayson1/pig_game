@@ -22,7 +22,7 @@ function generateDiceRoll() {
   let dice = Math.floor(Math.random() * 6) + 1;
 
   diceImg.style.display = "block";
-  diceImg.src = `/chapter_6/images/dice-${dice}.png`;
+  diceImg.src = `/images/dice-${dice}.png`;
   console.log(`Player ${activePlayer} rolled:
       ${dice}`);
 
