@@ -18,6 +18,16 @@ main {
 .player--active{
   background: #e0f7fa;
 }
+.player--winner {
+  background: #006;
+  color: #fff;
+} 
+.player--winner .score  {
+  color: #fff;
+}
+.player--winner .current {
+  background: #00a;
+}
 .score {
   font-size: 36px;
   color: #36a75f;
