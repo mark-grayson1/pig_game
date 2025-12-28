@@ -63,3 +63,9 @@ main {
 .btn:hover {
   background: #36885f;
 }
+
+.wins {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #36a75f;
+} 

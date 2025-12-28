@@ -1,10 +1,13 @@
-let scores = [0, 0]; // Total scores for both players
+let scores = [0, 0];  //player scores
+let wins = [0, 0];    //player wins
 let currentScore = 0;
 let activePlayer = 1;
 let playing = true;
 
 const score1Txt = document.querySelector("#score--1"); 
 const score2Txt = document.querySelector("#score--2");
+const wins1Txt = document.querySelector("#wins--1"); 
+const wins2Txt = document.querySelector("#wins--2");
 const current1Txt = document.querySelector("#current--1");
 const current2Txt = document.querySelector("#current--2");
 const diceImg = document.querySelector(".dice");
@@ -14,9 +17,24 @@ const holdBtn = document.querySelector(".btn--hold");
 const player1Txt = document.querySelector(".player--1");
 const player2Txt = document.querySelector(".player--2");
 
-score1Txt.textContent = "0";
-score2Txt.textContent = "0";
-diceImg.style.display = "none";
+const init = () => {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 1;
+  playing = true;
+  score1Txt.textContent = "0";
+  score2Txt.textContent = "0";
+  current1Txt.textContent = "0";
+  current2Txt.textContent = "0";
+  player1Txt.classList.remove("player--winner");
+  player2Txt.classList.remove("player--winner");
+  player1Txt.classList.add("player--active");
+  player2Txt.classList.remove("player--active");
+  diceImg.style.display = "none";
+  console.log("Game reset");
+};
+
+init();
 
 function generateDiceRoll() {
   let dice = Math.floor(Math.random() * 6) + 1;
@@ -48,9 +66,13 @@ function switchPlayer () {
 function checkWinner(params) {
   playing = false;
   diceImg.style.display = "none";
+  wins[activePlayer - 1]++;
 
+  document.querySelector(`#wins--${activePlayer}`).textContent = `Wins: ${wins[activePlayer - 1]}`;
   document.querySelector(`.player--${activePlayer}`).classList.add  ("player--winner");
   document.querySelector(`.player--${activePlayer}`).classList.remove   ("player--active");
+
+  console.log(`Player ${activePlayer} wins the game! Total Wins: ${wins[activePlayer - 1]}`);
   };
 
 rollBtn.addEventListener("click", ()=> {
@@ -81,3 +103,5 @@ holdBtn.addEventListener("click", ()=> {
     }
   }
 });
+
+newGameBtn.addEventListener("click", init);
