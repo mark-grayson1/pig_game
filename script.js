@@ -40,7 +40,7 @@ function generateDiceRoll() {
   let dice = Math.floor(Math.random() * 6) + 1;
 
   diceImg.style.display = "block";
-  diceImg.src = `/images/dice-${dice}.png`;
+  diceImg.src = `/dice-${dice}.png`;
   console.log(`Player ${activePlayer} rolled:
       ${dice}`);
 
